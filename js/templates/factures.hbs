@@ -10,13 +10,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		{{#each}}
+		{{#each facture in controller}}
 		<tr>
-			<td>{{ ref }}</td>
-			<td>{{#linkTo 'client' client}}{{ client.name }}{{/linkTo}}</td>
-			<td>{{ name }}</td>
-			<td>{{ montant }}</td>
-			<td>{{ payed }}</td>
+			<td>{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
+			<td>{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
+			<td>{{ facture.name }}</td>
+			<td>{{ facture.montant }}</td>
+			<td>{{ facture.payed }}</td>
 		</tr>
 		{{/each}}
 	</tbody>
