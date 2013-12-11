@@ -4,7 +4,7 @@ var Facture = DS.Model.extend({
 	name: DS.attr("string"),
 	payed: DS.attr("boolean"),
 	date: DS.attr("date"),
-	client: DS.belongsto('client')
+	client: DS.belongsTo('client')
 });
 
 module.exports = Facture;
