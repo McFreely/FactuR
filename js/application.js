@@ -18,8 +18,11 @@ var App = require('./app');
 
 App.Router.map(function() {
 	this.route('factures');
-	this.route('facture', {path: "/facture/:facture_id"})
+	this.route('facture', {path: "/facture/:facture_id"});
+	this.route('facture.new', {path: "/facture/new"});
 	this.route('client', {path: "/client/:client_id"});
+	this.route('client.new', {path: '/client/new'});
+	this.route('archives');
 });
 
 
@@ -144,16 +147,72 @@ module.exports = IndexRoute;
 Ember.TEMPLATES['application'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("Voir Factures");
+  }
 
-  data.buffer.push("\n");
-  data.buffer.push("\n\n");
+function program3(depth0,data) {
+  
+  
+  data.buffer.push("Nouvelle Facture");
+  }
+
+function program5(depth0,data) {
+  
+  
+  data.buffer.push("Nouveau Client");
+  }
+
+function program7(depth0,data) {
+  
+  
+  data.buffer.push("Archives");
+  }
+
+  data.buffer.push("<h1>FactuR</h1>\n\n<nav>\n  <ul>\n    <li>");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers.linkTo || depth0.linkTo),stack1 ? stack1.call(depth0, "factures", options) : helperMissing.call(depth0, "linkTo", "factures", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("</li>\n    <li>");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers.linkTo || depth0.linkTo),stack1 ? stack1.call(depth0, "facture.new", options) : helperMissing.call(depth0, "linkTo", "facture.new", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("</li>\n    <li>");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers.linkTo || depth0.linkTo),stack1 ? stack1.call(depth0, "client.new", options) : helperMissing.call(depth0, "linkTo", "client.new", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("</li>\n    <li>");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers.linkTo || depth0.linkTo),stack1 ? stack1.call(depth0, "archives", options) : helperMissing.call(depth0, "linkTo", "archives", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("</li>\n  </ul>\n</nav>\n\n");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n\n");
   return buffer;
+  
+});
+
+Ember.TEMPLATES['archives'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<h2>archives</h2>\n\n");
   
 });
 
@@ -265,6 +324,26 @@ function program4(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n	</tbody>\n</table>");
   return buffer;
+  
+});
+
+Ember.TEMPLATES['facture/new'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<h2>facture/new</h2>\n\n");
+  
+});
+
+Ember.TEMPLATES['client/new'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<h2>client/new</h2>\n\n");
   
 });
 
