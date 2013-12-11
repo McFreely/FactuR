@@ -1,4 +1,4 @@
-<h2>Factures</h2>
+<h3>Factures En Cours</h3>
 <table>
 	<thead>
 		<tr>
@@ -12,11 +12,11 @@
 	<tbody>
 		{{#each facture in controller}}
 		<tr>
-			<td>{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
-			<td>{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
-			<td>{{ facture.name }}</td>
-			<td>{{ facture.montant }}</td>
-			<td>{{ facture.payed }}</td>
+			<td width="150">{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
+			<td width="150">{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
+			<td width="300">{{ facture.name }}</td>
+			<td width="150">{{ facture.montant }}</td>
+			<td width="150">{{ facture.payed }}</td>
 		</tr>
 		{{/each}}
 	</tbody>
