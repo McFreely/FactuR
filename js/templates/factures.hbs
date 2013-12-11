@@ -1,4 +1,4 @@
-<h3>Factures En Cours</h3>
+<h3>{{ waitingFacturesCount }} Factures En Cours</h3>
 <table>
 	<thead>
 		<tr>
@@ -16,9 +16,9 @@
 			<td width="150">{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
 			<td width="150">{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
 			<td width="300">{{ facture.name }}</td>
-			<td width="150">{{ facture.montant }}</td>
+			<td width="150">{{ formatMontant facture.montant }}</td>
 			<td width="150">{{ attenteReglement facture.payed }}</td>
-			<td>{{ input type="checkbox" name="archived" }}</td>
+			<td class="center" >{{ input type="checkbox" name="archived" }}</td>
 		</tr>
 		{{/each}}
 	</tbody>

@@ -30,7 +30,7 @@ Facture.FIXTURES = [{
 	id: 3,
 	ref: 302934,
 	montant: 349,
-	name: 'fenetre voiture pour le casse-cou',
+	name: 'Fenetre voiture pour le casse-cou',
 	payed: true,
 	archived: false,
 	date: new Date(2012,5,3),
