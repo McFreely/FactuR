@@ -90,6 +90,7 @@ var Facture = DS.Model.extend({
 	name: DS.attr("string"),
 	payed: DS.attr("boolean"),
 	date: DS.attr("date"),
+	archived: DS.attr('boolean'),
 	client: DS.belongsTo('App.Client')
 });
 
@@ -97,24 +98,27 @@ Facture.FIXTURES = [{
 	id: 1,
 	ref: 293945,
 	montant: 650,
-	name: "Fenetre blanches",
+	name: "Fenetre blanches avec cadre pvc",
 	payed: false,
+	archived: false,
 	date: new Date(2013,10,23),
 	client: 1
 },{
 	id: 2,
 	ref: 293322,
 	montant: 1250,
-	name: "Fenetre noires",
+	name: "Fenetre noires avec cadre bois",
 	payed: false,
+	archived: false,
 	date: new Date(2013,3,13),
 	client: 1
 },{
 	id: 3,
 	ref: 302934,
 	montant: 349,
-	name: 'fenetre voiture',
+	name: 'fenetre voiture pour le casse-cou',
 	payed: true,
+	archived: false,
 	date: new Date(2012,5,3),
 	client: 2
 }]
@@ -298,6 +302,14 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "facture.payed", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</td>\n			<td>");
+  hashContexts = {'type': depth0,'name': depth0};
+  hashTypes = {'type': "STRING",'name': "STRING"};
+  options = {hash:{
+    'type': ("checkbox"),
+    'name': ("archived")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("</td>\n		</tr>\n		");
   return buffer;
   }
@@ -317,7 +329,7 @@ function program4(depth0,data) {
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "facture.client.name", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   }
 
-  data.buffer.push("<h3>Factures En Cours</h3>\n<table>\n	<thead>\n		<tr>\n			<th>Reference</th>\n			<th>Client</th>\n			<th>Description</th>\n			<th>Montant</th>\n			<th>Réglée ?</th>\n		</tr>\n	</thead>\n	<tbody>\n		");
+  data.buffer.push("<h3>Factures En Cours</h3>\n<table>\n	<thead>\n		<tr>\n			<th>Reference</th>\n			<th>Client</th>\n			<th>Description</th>\n			<th>Montant</th>\n			<th>En Attente</th>\n			<th>Archiver</th>\n		</tr>\n	</thead>\n	<tbody>\n		");
   hashTypes = {};
   hashContexts = {};
   stack1 = helpers.each.call(depth0, "facture", "in", "controller", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});

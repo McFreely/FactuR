@@ -6,7 +6,8 @@
 			<th>Client</th>
 			<th>Description</th>
 			<th>Montant</th>
-			<th>Réglée ?</th>
+			<th>En Attente</th>
+			<th>Archiver</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,6 +18,7 @@
 			<td width="300">{{ facture.name }}</td>
 			<td width="150">{{ facture.montant }}</td>
 			<td width="150">{{ facture.payed }}</td>
+			<td>{{ input type="checkbox" name="archived" }}</td>
 		</tr>
 		{{/each}}
 	</tbody>
