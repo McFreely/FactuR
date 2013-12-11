@@ -1,4 +1,4 @@
-<h2>factures</h2>
+<h2>Factures</h2>
 <table>
 	<thead>
 		<tr>
@@ -13,7 +13,7 @@
 		{{#each}}
 		<tr>
 			<td>{{ ref }}</td>
-			<td>{{ client.name }}</td>
+			<td>{{#linkTo 'client' client}}{{ client.name }}{{/linkTo}}</td>
 			<td>{{ name }}</td>
 			<td>{{ montant }}</td>
 			<td>{{ payed }}</td>
