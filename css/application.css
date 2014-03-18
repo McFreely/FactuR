@@ -1,2 +1,21 @@
 .center {text-align: center;}
 .custom-width {width: 100px; margin-bottom: 0;}
+.canvas {width:100%; height: 400px;}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.donuts {margin-bottom: 30px; margin-top: 15px;}
+
+.donut, .donut-main { text-align: center;}
+.donut h6 {margin-top: -20px;}
+
+.donut-main h6 {margin-top: 0;}

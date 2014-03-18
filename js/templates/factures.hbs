@@ -1,25 +1,68 @@
-<h3>{{ waitingFacturesCount }} Factures En Cours</h3>
-<table>
-	<thead>
-		<tr>
-			<th>Reference</th>
-			<th>Client</th>
-			<th>Description</th>
-			<th>Montant</th>
-			<th>Status</th>
-			<th>Archiver</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each facture in controller}}
-		<tr>
-			<td width="150">{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
-			<td width="150">{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
-			<td width="300">{{ facture.name }}</td>
-			<td width="150">{{ formatMontant facture.montant }}</td>
-			<td width="150">{{ attenteReglement facture.payed }}</td>
-			<td class="center" >{{ input type="checkbox" name="archived" }}</td>
-		</tr>
-		{{/each}}
-	</tbody>
-</table>
+<div class="row donuts">
+	<div class="small-4 columns donut">
+		{{ donut-chart 
+				width=300 
+				height=150 
+				innerRad=45
+				outerRad=70 
+				data=factureNumber 
+				name='Factures Payées' 
+		}}
+		<h6><b>Factures Payées</b></h6>
+	</div>
+
+	<div class="small-4 columns donut-main">
+		{{ donut-chart 
+				width=300 
+				height=150 
+				innerRad=50 
+				outerRad=75 
+				data=totalWaitingSum 
+				name="En Attente"
+		}}
+	<h6><b>Sommes en Attente</b></h6>
+	</div>
+
+	<div class="small-4 columns donut">
+	{{ donut-chart 
+			width=300 
+			height=150 
+			innerRad=45 
+			outerRad=70
+	 		data=sommePrevisionnelle
+	 		name="Previsionnel" 
+	 }}
+	<h6><b>Somme Prévisionnelle</b></h6>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="small-12 columns">
+		<h3>Factures En Cours</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>{{!-- <i {{ bindAttr class='sortAscending:fi-arrow-up:fi-arrow-down arrow'}}></i> --}}<a {{action pushSort 'ref'}}> Reference</a></th>
+					<th>Client</th>
+					<th>Description</th>
+					<th>{{!-- <i {{ bindAttr class='sortAscending:fi-arrow-up:fi-arrow-down arrow'}}></i> --}}<a {{action pushSort 'amount' }}> Montant</a></th>
+					<th>{{!-- <i {{ bindAttr class='sortAscending:fi-arrow-up:fi-arrow-down arrow'}}></i> --}}<a {{action pushSort 'payed' }}> Status</a></th>
+					<th>Archiver</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each facture in controller}}
+				<tr>
+					<td width="150">{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
+					<td width="150">{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
+					<td width="300">{{ facture.name }}</td>
+					<td width="150">{{ formatMontant facture.amount }}</td>
+					<td width="150">{{ attenteReglement facture.payed }}</td>
+					<td class="center" >{{ input type="checkbox" name="archived" }}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
