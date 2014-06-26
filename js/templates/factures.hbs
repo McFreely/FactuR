@@ -3,7 +3,7 @@
 		{{ donut-chart 
 				width=300 
 				height=150 
-				innerRad=45
+				innerRad=50
 				outerRad=70 
 				data=factureNumber 
 				name='Factures Payées' 
@@ -16,7 +16,7 @@
 				width=300 
 				height=150 
 				innerRad=50 
-				outerRad=75 
+				outerRad=75
 				data=totalWaitingSum 
 				name="En Attente"
 		}}
@@ -27,7 +27,7 @@
 	{{ donut-chart 
 			width=300 
 			height=150 
-			innerRad=45 
+			innerRad=50 
 			outerRad=70
 	 		data=sommePrevisionnelle
 	 		name="Previsionnel" 
@@ -44,7 +44,7 @@
 			<thead>
 				<tr>
 					<th>{{!-- <i {{ bindAttr class='sortAscending:fi-arrow-up:fi-arrow-down arrow'}}></i> --}}<a {{action pushSort 'ref'}}> Reference</a></th>
-					<th>Client</th>
+					<th><a {{action pushSort 'client.name'}}> Client</a></th>
 					<th>Description</th>
 					<th>{{!-- <i {{ bindAttr class='sortAscending:fi-arrow-up:fi-arrow-down arrow'}}></i> --}}<a {{action pushSort 'amount' }}> Montant</a></th>
 					<th>{{!-- <i {{ bindAttr class='sortAscending:fi-arrow-up:fi-arrow-down arrow'}}></i> --}}<a {{action pushSort 'payed' }}> Status</a></th>
@@ -54,7 +54,7 @@
 			<tbody>
 				{{#each facture in controller}}
 				<tr>
-					<td width="150">{{#linkTo 'facture' facture}}{{ facture.ref }}{{/linkTo}}</td>
+					<td width="150">{{ facture.ref }}</td>
 					<td width="150">{{#linkTo 'client' facture.client}}{{ facture.client.name }}{{/linkTo}}</td>
 					<td width="300">{{ facture.name }}</td>
 					<td width="150">{{ formatMontant facture.amount }}</td>

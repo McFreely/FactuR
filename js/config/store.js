@@ -2,7 +2,7 @@
 require('../vendor/localstorage_adapter');
 
 module.exports = DS.Store.extend({
-  revision: 11,
+  revision: 15,
   //adapter: DS.RESTAdapter.create()
   adapter: DS.FixtureAdapter.extend()
 });

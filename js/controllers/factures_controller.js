@@ -34,13 +34,13 @@ var FacturesController = Ember.ArrayController.extend({
 		var totalPercent = (payed / total) * 100;
 
 		//Return the D3 array
-		return [[0, totalPercent, "rgba(118, 180, 31, 0.7)", "payées"],[totalPercent, 100, "rgba(93, 31, 180, 0.7)", "impayées"]];
+		return [[0, totalPercent, "rgba(118, 180, 31, 0.7)"],[totalPercent, 100, "rgba(93, 31, 180, 0.7)", "impayées", notPayed]];
 	}.property('@each.payed'),
 		
 	totalWaitingSum: function() {
 
-		var totalpayed = 0;
-		var total = 0;
+		var totalPayed = 0;
+		var totalUnpayed = 0;
 
 		var payedFactures = this.filter(function(facture) {
 			return facture.get('payed') === true;
@@ -51,22 +51,20 @@ var FacturesController = Ember.ArrayController.extend({
 		})
 
 		payedFactures.forEach(function(item) {
-			totalpayed += item.get('amount');
+			totalPayed += item.get('amount');
 		});
 		unpayedFactures.forEach(function(item) {
-			total += item.get('amount');
+			totalUnpayed += item.get('amount');
 		});
 
-		var total = total + totalpayed;
-		console.log(totalpayed);
-		console.log(total);
-		var totalPercent = (totalpayed / total) * 100
+		var finalTotal = totalUnpayed + totalPayed;
+		var totalPercent = (totalPayed / finalTotal) * 100
 
-		return [[0, totalPercent, "rgba(31, 119, 180, 0.9)"],[totalPercent, 100, "rgba(214, 39, 40, 0.9)"]];
+		return [[0, totalPercent, "rgba(31, 119, 180, 0.9)", "En Attente", totalUnpayed],[totalPercent, 100, "rgba(214, 39, 40, 0.9)"]];
 	}.property('@each.{payed,amount}'),
 
 	sommePrevisionnelle: function() {
-		return [[0, 73, "rgba(255, 127, 14, 0.7)"],[73, 100, "rgba(14, 142, 254, 0.7)"]];
+		return [[0, 73, "rgba(255, 127, 14, 0.7)"],[73, 100, "rgba(14, 142, 254, 0.7)", "Année", "en cours"]];
 	}
 });
 

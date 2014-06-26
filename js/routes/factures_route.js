@@ -1,7 +1,7 @@
 var FacturesRoute = Ember.Route.extend({
-	model: function() {
-		return App.Facture.find();
-	}
+  model: function(){
+    return this.store.findAll("facture");
+  }
 });
 
 module.exports = FacturesRoute;

@@ -1,5 +1,22 @@
-<h3>Client</h3>
-<h4>{{ name }}</h4>
-<p>{{ address }}</p>
-<p>{{ email }}</p>
-<p>{{ telephone}}</p>
+<div class="row">
+	<div class="small-4 columns client-card">
+		<h4>Client: <b>{{ name }}</b></h4>
+		<h4>Contact: </h4>
+		<p>{{ address }}</p>
+		<p>{{ email }}</p>
+		<p>{{ telephone}}</p>
+		<h4>Factures: </h4>
+		{{#each facture}}
+			<p># {{ref}} - {{#link-to 'client.facture' this}} {{formatMontant amount}} {{/link-to}}</p>
+		{{/each}}
+	</div>
+	<div class="small-8 columns details">
+		<h4>Status et Détails: </h4>
+		{{#if facture}}
+			{{outlet}}
+		{{else}}
+			{{partial "default"}}
+		{{/if}}
+
+	</div>
+</div>

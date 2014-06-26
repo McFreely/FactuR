@@ -7,7 +7,7 @@
 require('../vendor/ember-data'); // delete if you don't want ember-data
 
 var App = Ember.Application.create();
-App.Store = require('./store'); // delete if you don't want ember-data
+App.Store = require('./store');
+// App.ApplicationAdapter = DS.FixtureAdapter;
 
 module.exports = App;
-
